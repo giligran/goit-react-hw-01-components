@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types'; // ES6
 import TransactionItem from './TransactionItem';
 import css from 'components/TransactionHistory/TransactionHistory.module.css';
+import { type } from '@testing-library/user-event/dist/type';
 
 function TransactionHistory({ items }) {
   return (
@@ -13,12 +15,12 @@ function TransactionHistory({ items }) {
           </tr>
         </thead>
         <tbody className={css['table-body']}>
-          {items.map(item => (
-            <tr key={item.id}>
+          {items.map(({ id, type, amount, currency }) => (
+            <tr key={id}>
               <TransactionItem
-                type={item.type}
-                amount={item.amount}
-                currency={item.currency}
+                type={type}
+                amount={amount}
+                currency={currency}
               />
             </tr>
           ))}
@@ -27,5 +29,16 @@ function TransactionHistory({ items }) {
     </div>
   );
 }
+
+TransactionHistory.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 export default TransactionHistory;

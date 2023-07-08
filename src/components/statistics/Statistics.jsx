@@ -28,7 +28,7 @@ export function Statistics({ title, stats }) {
   );
 }
 
-Statistics.prototype = {
+Statistics.propTypes = {
   title: PropTypes.string.isRequired,
 };
 

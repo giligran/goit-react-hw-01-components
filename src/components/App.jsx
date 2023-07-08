@@ -2,7 +2,7 @@ import user from 'user.json';
 import Profile from 'components/profile/Profile';
 import Statistics from './statistics/Statistics';
 import data from 'data.json';
-import FriendsList from 'components/friends/frineds';
+import FriendsList from 'components/friends/friends';
 import friends from 'friends.json';
 import transactions from 'transactions.json';
 import { Table } from 'antd';
