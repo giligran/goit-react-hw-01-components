@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'; // ES6
 import TransactionItem from './TransactionItem';
 import css from 'components/TransactionHistory/TransactionHistory.module.css';
-import { type } from '@testing-library/user-event/dist/type';
 
 function TransactionHistory({ items }) {
   return (
