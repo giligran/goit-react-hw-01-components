@@ -1,10 +1,10 @@
-import Profile from 'components/Profile/Profile';
-import Statistics from '../Statistics/Statistics';
-import FriendsList from 'components/Ffriends/Friends';
 import { Table } from 'antd';
+import Profile from 'components/Profile/Profile';
+import FriendsList from 'components/Ffriends/Friends';
 import tableApp from '../TransactionHistory/Table';
 import TransactionHistory from '../TransactionHistory/TransactionHistory';
 import { data, friends, transactions, user } from 'utils/importsData';
+import Statistics from 'components/Statistics/Statistics';
 
 export const App = () => {
   return (
