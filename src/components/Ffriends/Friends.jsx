@@ -1,5 +1,4 @@
-import PropTypes, { object } from 'prop-types'; // ES6
-import css from './Friends.module.css';
+import PropTypes from 'prop-types'; // ES6
 import FriendListItem from './FriendListItem';
 import { Container, List } from './Friends.styled';
 
