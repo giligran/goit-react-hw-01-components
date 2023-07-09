@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types'; // ES6
 import { GrStatusGoodSmall } from 'react-icons/gr';
-import css from 'components/friends/frineds.module.css';
-
-function statusColor(status) {
-  return status ? 'green' : 'red';
-}
+import { ListElement } from './Friends.styled';
 
 function FriendListItem({ avatar, status, name }) {
   return (
-    <>
-      <GrStatusGoodSmall color={statusColor(status)} />
-      <img className={css.avatar} src={avatar} alt="User avatar" width="48" />
-      <p className={css.name}>{name}</p>
-    </>
+    <ListElement>
+      <span className="status">
+        <GrStatusGoodSmall color={status ? 'red' : 'green'} />
+      </span>
+      <img src={avatar} alt="User avatar" width="48" />
+      <p>{name}</p>
+    </ListElement>
   );
 }
 

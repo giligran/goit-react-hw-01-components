@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types'; // ES6
-import css from 'components/statistics/Statistics.module.css';
-import StatisticsItem from './StatisticksItem';
+import {
+  Section,
+  Title,
+  Container,
+  List,
+  Item,
+  Label,
+  Percentage,
+} from './Statistics.styled';
 
 function setRandomBackgroundColor() {
   const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -9,27 +16,36 @@ function setRandomBackgroundColor() {
 
 export function Statistics({ title, stats }) {
   return (
-    <section className={css.stats}>
-      <div className={css.container}>
-        <h2 className={css.title}>{title}</h2>
-        <ul className={css.list}>
-          {stats.map(({ label, percentage, id }) => (
-            <li
-              key={id}
-              className={css.item}
-              style={{ backgroundColor: setRandomBackgroundColor() }}
+    <Section>
+      <Container>
+        <Title>{title && title}</Title>
+        <List>
+          {stats.map(item => (
+            <Item
+              key={item.id}
+              style={{
+                backgroundColor: `${setRandomBackgroundColor()}`,
+              }}
             >
-              <StatisticsItem label={label} percentage={percentage} />
-            </li>
+              <Label>{item.label}</Label>
+              <Percentage>{item.percentage}</Percentage>
+            </Item>
           ))}
-        </ul>
-      </div>
-    </section>
+        </List>
+      </Container>
+    </Section>
   );
 }
 
 Statistics.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Statistics;
