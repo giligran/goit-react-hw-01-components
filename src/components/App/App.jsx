@@ -1,10 +1,10 @@
 import { Table } from 'antd';
-import TransactionHistory from '../TransactionHistory/TransactionHistory';
 import { data, friends, transactions, user } from 'utils/importsData';
+import Profile from 'components/Profile/Profile';
 import Statistics from 'components/Statistics/Statistics';
-import FriendsList from '../Ffriends/Friends';
-import tableApp from '../TransactionHistory/Table';
-import Profile from '../Profile/Profile';
+import FriendsList from 'components/Ffriends/Friends';
+import TransactionHistory from 'components/TransactionHistory/TransactionHistory';
+import tableApp from 'components/TransactionHistory/Table';
 
 export const App = () => {
   return (
@@ -18,8 +18,8 @@ export const App = () => {
       />
       <Statistics title="Upload stats" stats={data} />
       <FriendsList friends={friends} />
-      <Table columns={tableApp.columns} dataSource={transactions} rowKey="id" />
       <TransactionHistory items={transactions} />
+      <Table columns={tableApp.columns} dataSource={transactions} rowKey="id" />
     </>
   );
 };
