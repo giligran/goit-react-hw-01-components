@@ -18,17 +18,17 @@ export function Statistics({ title, stats }) {
   return (
     <Section>
       <Container>
-        <Title>{title && title}</Title>
+        {title && <Title>{title}</Title>}
         <List>
-          {stats.map(item => (
+          {stats.map(({ id, label, percentage }) => (
             <Item
-              key={item.id}
+              key={id}
               style={{
                 backgroundColor: `${setRandomBackgroundColor()}`,
               }}
             >
-              <Label>{item.label}</Label>
-              <Percentage>{item.percentage}</Percentage>
+              <Label>{label}</Label>
+              <Percentage>{percentage}</Percentage>
             </Item>
           ))}
         </List>
@@ -44,7 +44,7 @@ Statistics.propTypes = {
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       percentage: PropTypes.number.isRequired,
-    })
+    }).isRequired
   ).isRequired,
 };
 

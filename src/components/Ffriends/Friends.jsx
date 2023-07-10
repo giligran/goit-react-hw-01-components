@@ -6,12 +6,12 @@ function FriendsList({ friends }) {
   return (
     <Container>
       <List>
-        {friends.map(item => (
+        {friends.map(({ id, avatar, isOnline, name }) => (
           <FriendListItem
-            key={item.id}
-            avatar={item.avatar}
-            status={item.isOnline}
-            name={item.name}
+            key={id}
+            avatar={avatar}
+            status={isOnline}
+            name={name}
           />
         ))}
       </List>
@@ -20,7 +20,14 @@ function FriendsList({ friends }) {
 }
 
 FriendsList.propTypes = {
-  friends: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  friends: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      avatar: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 export default FriendsList;
